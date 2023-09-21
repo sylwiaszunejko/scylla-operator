@@ -397,7 +397,7 @@ func (p *scyllaConnPicker) Put(conn *Conn) {
 
 	if nrShards != len(p.conns) {
 		if nrShards != p.nrShards {
-			panic(fmt.Sprintf("scylla: %s invalid number of shards", p.address))
+			panic(fmt.Sprintf("scylla: %s invalid number of shards %d != %d", p.address, nrShards, p.nrShards))
 		}
 		conns := p.conns
 		p.conns = make([]*Conn, nrShards, nrShards)

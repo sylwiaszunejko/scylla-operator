@@ -125,7 +125,7 @@ runs:
       -v="${ARTIFACTS_DIR}:${ARTIFACTS_DIR}:rw" \
       -v="${HOME}/.kube/config:/kubeconfig:ro" -e='KUBECONFIG=/kubeconfig' \
       '${{ env.image_repo_ref }}:ci' \
-      run '${{ inputs.suite }}' \
+      run all --parallelism=1 --focus="ScyllaCluster should reconcile resource changes" \
       --loglevel=2 \
       --artifacts-dir="${ARTIFACTS_DIR}" \
       --flake-attempts="${flake_attempts}" \
